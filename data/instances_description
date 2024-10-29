@@ -1,0 +1,22 @@
+# First line = 3 numbers
+c v o
+c : integer;  # clientes
+v : integer;  # vehiculos
+o : integer;  # ordenes
+
+# Next line = 2 numbers
+x y
+x : real ;    # Depósito x coordenadas
+y : real ;    # Depósito y coordenadas
+
+# Next c lines = 2 numbers
+x y
+x : real ;    # Cliente x coordenadas
+y : real ;    # Cliente y coordenadas
+
+# Next v lines = 1 number
+a
+a : integer;  # Capacidad de cada vehículo
+
+# Next o lines = 3 elements
+origen destino cantidad

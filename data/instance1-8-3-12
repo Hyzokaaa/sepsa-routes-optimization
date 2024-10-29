@@ -1,0 +1,30 @@
+# Depot Position
+Depot,3.0,4.0
+
+# Vehicles
+V1,25
+V2,10
+V3,15
+
+# Orders
+pickup, Client 5, Depot, 5
+mixed, Depot, Client 1, 5, 10
+delivery, Depot, Client 2, 5
+mixed, Depot, Client 3, 10, 5
+pickup, Client 4, Depot, 10
+mixed, Depot, Client 6, 10, 5
+pickup, Client 7, 5
+mixed, Depot, Client 8, 15, 5
+
+# Clients
+Client 1,4.0,13.0
+Client 2,5.0,8.0
+Client 3,12.0,2.0
+Client 4,13.0,8.0
+Client 5,14.0,12.0
+Client 6,18.0,6.0
+Client 7,21.0,15.0
+Client 8,12.0,16.0
+
+
+

@@ -1,0 +1,16 @@
+# Depot Position
+Depot,0.0,0.0
+
+# Vehicles
+V1,50.0
+V2,150.0
+
+# Orders
+delivery,Depot,Client A,50.0
+pickup,Client B,Depot,30.0
+mixed,Depot,Client C,20.0,10.0
+
+# Clients
+Client A,10.0,10.0
+Client B,20.0,20.0
+Client C,15.0,15.0
