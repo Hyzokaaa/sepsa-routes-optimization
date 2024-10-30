@@ -1,22 +1,18 @@
 import matplotlib.pyplot as plt
 
-
 class Visualizer:
     def __init__(self, problem):
         self.problem = problem
 
     def plot_initial_state(self):
         depot = self.problem.depot
-        clients = self.problem.clients
-
+        clients = self.problem.clients.values()  # Accedemos a los valores directamente
         # Plot depot
-        plt.scatter(depot.x, depot.y, c='red', marker='D', label='Depot')
-
+        plt.scatter(depot.position[0], depot.position[1], c='red', marker='D', label='Depot')
         # Plot clients
         for client in clients:
-            plt.scatter(client.x, client.y, c='blue', marker='o')
-            plt.text(client.x, client.y, f' {client.id}', fontsize=12)
-
+            plt.scatter(client.position[0], client.position[1], c='blue', marker='o')
+            plt.text(client.position[0], client.position[1], f' {client.loc_id}', fontsize=12)
         plt.xlabel('X coordinate')
         plt.ylabel('Y coordinate')
         plt.title('Initial State Visualization')
@@ -26,32 +22,28 @@ class Visualizer:
 
     def plot_solution(self, solution):
         depot = self.problem.depot
-        clients = self.problem.clients
-
+        clients = self.problem.clients.values()  # Accedemos a los valores directamente
         # Plot depot
-        plt.scatter(depot.x, depot.y, c='red', marker='D', label='Depot')
-
+        plt.scatter(depot.position[0], depot.position[1], c='red', marker='D', label='Depot')
         # Plot clients
         for client in clients:
-            plt.scatter(client.x, client.y, c='blue', marker='o')
-            plt.text(client.x, client.y, f' {client.id}', fontsize=12)
-
+            plt.scatter(client.position[0], client.position[1], c='blue', marker='o')
+            plt.text(client.position[0], client.position[1], f' {client.loc_id}', fontsize=12)
         # Plot routes
         colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k']
-        for idx, (vehicle, orders) in enumerate(solution.items()):
-            route_x, route_y = [depot.x], [depot.y]
+        for idx, (vehicle_id, orders) in enumerate(solution.items()):
+            route_x, route_y = [depot.position[0]], [depot.position[1]]
             for order in orders:
-                if order.origin == self.problem.depot.id:
-                    client = next((c for c in clients if c.id == order.destination), None)
+                if order.origin == self.problem.depot.loc_id:
+                    client = self.problem.clients[order.destination]
                 else:
-                    client = next((c for c in clients if c.id == order.origin), None)
+                    client = self.problem.clients[order.origin]
                 if client:
-                    route_x.append(client.x)
-                    route_y.append(client.y)
-            route_x.append(depot.x)
-            route_y.append(depot.y)
-            plt.plot(route_x, route_y, colors[idx % len(colors)], label=f'Vehicle {vehicle.id}')
-
+                    route_x.append(client.position[0])
+                    route_y.append(client.position[1])
+            route_x.append(depot.position[0])
+            route_y.append(depot.position[1])
+            plt.plot(route_x, route_y, colors[idx % len(colors)], label=f'Vehicle {vehicle_id}')
         plt.xlabel('X coordinate')
         plt.ylabel('Y coordinate')
         plt.title('Solution Visualization')

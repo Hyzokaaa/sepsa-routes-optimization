@@ -13,7 +13,7 @@ delivery, Depot, Client 2, 5
 mixed, Depot, Client 3, 10, 5
 pickup, Client 4, Depot, 10
 mixed, Depot, Client 6, 10, 5
-pickup, Client 7, 5
+pickup, Client 7, Depot, 5
 mixed, Depot, Client 8, 15, 5
 
 # Clients
